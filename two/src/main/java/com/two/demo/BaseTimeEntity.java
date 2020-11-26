@@ -1,7 +1,9 @@
 package com.two.demo;
 
 import java.time.LocalDateTime;
+import java.util.TimeZone;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 
@@ -20,4 +22,5 @@ public abstract class BaseTimeEntity {
 
     @LastModifiedDate
     private LocalDateTime modifiedDate;
+    
 }

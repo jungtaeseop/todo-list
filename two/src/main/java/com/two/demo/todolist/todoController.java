@@ -1,6 +1,10 @@
 package com.two.demo.todolist;
 
 
+import java.util.TimeZone;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +28,13 @@ public class todoController {
 	
 	@PostMapping(path="/add")
 	@ResponseBody
-	public String addTodo (@RequestBody Todo_item todo_item) {
+	public String addTodo(@RequestBody Todo_item todo_item) {
 		Todo_item n = new Todo_item();
 	    n.Todo_item(todo_item.getWork());
 	    todo_itemRepository.save(n);
 	    return "Saved";
 	}
+	
 	
 //	@GetMapping(path="/all")
 //	@ResponseBody

@@ -32,7 +32,7 @@ public class Todo_item extends BaseTimeEntity {
 	private String completion;
 	
 	@Builder
-	public void Todo_item(String work) {
+	public void Todo_item(String work) {  //해당 값을 받아서 work에 넣어 주는 함수
 		this.work=work;
 	}
 
