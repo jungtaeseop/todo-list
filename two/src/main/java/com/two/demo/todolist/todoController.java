@@ -36,11 +36,11 @@ public class todoController {
 	}
 	
 	
-//	@GetMapping(path="/all")
-//	@ResponseBody
-//	  public Iterable<Tb_item> getAllUsers() {
-//	    // This returns a JSON or XML with the users
-//	    return tb_itemRepository.findAll();
-//	  }
+	@GetMapping(path="/all")
+	@ResponseBody
+	  public Iterable<Todo_item> getAllUsers() {
+	    // This returns a JSON or XML with the users
+	    return todo_itemRepository.findAll();
+	  }
 
 }

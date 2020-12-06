@@ -16,8 +16,8 @@
 			<div class="row mt-3">
 				<div class="col-auto">
 					<input v-model="todoinput" type="text" placeholder="ID">
-					<button type="button" class="btn btn-primary btn-sm"
-						v-on:click="todoclick">New Todo</button>
+					<!-- <button type="button" class="btn btn-primary btn-sm"
+						v-on:click="todoclick">New Todo</button> -->
 				</div>
 			</div>
 
@@ -43,12 +43,19 @@
 								<th>완료처리</th>
 							</tr>
 						</thead>
-						<tbody id="todo_table_body">
-							<tr v-if="list.length < 1">
-								<td colspan="5" align="center">등록된 할일이 없습니다.</td>
-							</tr>
-							<tr v-else>
-								<td>{{list}}</td>
+						
+						
+						<tbody v-if="list.length < 1" id="todo_table_body"> <!-- list 길이가 1보다 작을때 수행 list = 할 일 db 값-->
+							<td colspan="5" align="center">등록된 할일이 없습니다.</td>
+						</tbody>
+						
+						<tbody v-else id="todo_table_body1">
+						  <tr v-for="item in list">
+								<td>{{item.number}}</td>
+								<td>{{item.work}}</td>
+								<td>{{item.createdDate}}</td>
+								<td>{{item.modifiedDate}}</td>
+								<td>{{item.completion}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -62,9 +69,11 @@
 	<%@ include file="include/footer.jsp"%>
 
 
+</body>
+
 <script>
 
-	$(function() {
+$(function() {    // 아래 있는 함수를  var setVue = function() 사용하는 부분
 		setVue();
 	});
 	
@@ -76,21 +85,19 @@
 				todoinput: ''
 		  	},
 			created: function() {
-                 this.getItem();
+                 this.getWork();
+                 //this.postWork();
 			},
             methods: {
-            	todoclick: function() {
-					console.log('click')
-                },
-				getItem: function() {
-					axios.get('/api', {
-						// get 통신일때만  params 쓰는것 
-				        params: {
-					       id : this.id			
+				getWork: function() {
+					axios.get('/all', { //all 페이지의 값의 결과를 가져와 home 페이지에 변수값으로 띄어줄수 있음 
+						 
+				        params: {  // get 통신일때만  params 쓴다
+					      // list : this.list	 값을 뒤쪽에 넘길때 쓴다		
 					    }
 					}) 
 					.then(result => {
-                        //console.log(result)
+                        console.log('response', result.data) // f12 눌렀을때 console 에 찍는다 response로 시작하고 result.data는 해당 json값만 넘겨준다.
                         this.list = result.data;
 						
 	                })
@@ -99,8 +106,8 @@
 	                });
 				},
 
-				postItem: function() {
-					axios.post('/api/item', {
+	/*			postWork: function() {
+					axios.post('/api/item', {   // post 통신일때 axios.post 씀 
 					       id : this.postId,
 					       password : this.postPassword,
 					       userName : this.postUserName,
@@ -113,7 +120,11 @@
 					.catch(error => {
 	                	//notice(error, false);
 	                });
-				}
+				}*/
+
+
+
+				
 
 
             }
@@ -122,6 +133,4 @@
 		return pageVue;
 	} 
 </script>
-
-</body>
 </html>
