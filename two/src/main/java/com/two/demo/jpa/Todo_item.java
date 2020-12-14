@@ -27,7 +27,7 @@ import lombok.NoArgsConstructor;
 @DynamicInsert  // DB에 default 값을 넣어주는 어노테이션  같이 써야된다
 public class Todo_item extends BaseTimeEntity {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private Integer number;
 	
 	@Column(length = 100, nullable = false) // nullable db에 null값 허용 안함
