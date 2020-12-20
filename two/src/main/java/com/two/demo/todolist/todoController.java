@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,12 +45,21 @@ public class todoController {
 	@DeleteMapping(path = "/delete")
 	@ResponseBody
 	public String deleteTodo(@RequestBody Todo_item todo_item) {  // todo_item 값을 number 값만 삭제 가능
-	
+		
 		todo_itemRepository.delete(todo_item);
 		return "delete";
 	}
-
-//  @PostMapping(path = "/delete")
+	
+	
+	@PutMapping(path = "update")
+	@ResponseBody
+	public String updateTodo(@RequestBody Todo_item todo_item ) {
+		
+		todo_itemRepository.save(todo_item);
+		return "put";
+	}
+	
+//  @DeleteMappin(path = "/delete")
 //  @ResponseBody
 //  public String deleteTodo(@RequestBody Todo_item todo_item) {
 //	  
