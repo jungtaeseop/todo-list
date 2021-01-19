@@ -26,11 +26,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		
 		<dependency>
-			<groupId>org.mariadb.jdbc</groupId>
-			<artifactId>mariadb-java-client</artifactId>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -42,21 +44,19 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -70,19 +70,6 @@
 		</dependency>
 
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager 
-			<dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-entitymanager</artifactId> 
-			<version>5.4.23.Final</version> </dependency> <dependency> <groupId>org.hibernate</groupId> 
-			<artifactId>hibernate-core</artifactId> <version>5.4.23.Final</version> </dependency> -->
-
-
-
-		<!-- security -->
-		<!-- <dependency> <groupId>org.thymeleaf.extras</groupId> <artifactId>thymeleaf-extras-springsecurity5</artifactId> 
-			<version>3.0.4.RELEASE</version> </dependency> <dependency> <groupId>org.springframework.boot</groupId> 
-			<artifactId>spring-boot-starter-security</artifactId> </dependency> -->
-
-		<!-- jsp -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -102,39 +89,22 @@
 
 	<build>
 		<plugins>
-
             <plugin>
-
                 <groupId>org.springframework.boot</groupId>
-
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
                 <dependencies>
-
                     <dependency>
-
                         <groupId>org.springframework</groupId>
-
                         <artifactId>springloaded</artifactId>
-
                         <version>1.2.1.RELEASE</version>
-
                     </dependency>
-
                 </dependencies>
-
                 <configuration>
-
                     <jvmArguments>
-
                         -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8090,suspend=n
-
                     </jvmArguments>
-
                 </configuration>
-
             </plugin>
-
         </plugins>
 	</build>
 

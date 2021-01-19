@@ -49,7 +49,7 @@
 						<tbody v-if="list">
 							<!-- list 있을때  할 일 db 값 출력-->
 							<tr v-for="item in list">
-								<td>{{item.number}}</td>
+								<td>{{item.id}}</td>
 								<td>{{item.work}}</td>
 								<td>
 									<span>{{item.createdDate.split('T')[0]}}</span>
